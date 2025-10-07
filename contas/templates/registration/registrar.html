@@ -1,0 +1,12 @@
+{% extends 'mestre.html' %}
+
+
+{% load crispy_forms_tags %}
+{% block conteudo %}
+<h2>Cadastro</h2>
+<form action="" method="post">
+    {{ form|crispy }}
+    {% csrf_token %}
+    <input type="submit" value="Cadastrar" class="btn btn-primary">
+    </form>
+{% endblock conteudo %}

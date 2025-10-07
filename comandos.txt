@@ -1,0 +1,47 @@
+echo "django" > requirements.txt
+
+echo "pillow" >> requirements.txt
+
+pip install -r requirements.txt
+
+
+pip freeze > requirements.txt
+
+django-admin startproject aula03 .
+
+python manage.py startapp Farmacia
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py createsuperuser
+
+python manage.py runserver
+
+
+
+
+
+
+
+
+
+
+
+ 
+1º
+
+git init
+git add .
+git commit -m "Primeiro commit"
+git remote add origin 
+git branch -M main
+git push -u origin main
+
+
+2º
+
+git add .
+git commit -m "Descrição das mudanças"
+git push

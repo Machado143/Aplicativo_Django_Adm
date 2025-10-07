@@ -1,0 +1,785 @@
+/* Reset e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    color: #ffffff;
+    padding-top: 70px;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Menu de navegação fixo - baseado no seu #botoes */
+#botoes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#botoes a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 25px;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+#botoes a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #CC0000);
+    border-radius: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+#botoes a:hover::before {
+    opacity: 1;
+}
+
+#botoes a:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.4);
+}
+
+/* Container principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 40px 0 30px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #000000, #CC0000);
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+/* Área da hora - específica para data-hora.html */
+#hora {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 500px;
+    padding: 40px 30px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(204, 0, 0, 0.5);
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+#hora-atual {
+    display: block !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #CC0000 !important;
+    margin-top: 20px !important;
+    text-shadow: 0 3px 10px rgba(204, 0, 0, 0.3) !important;
+    animation: pulseTime 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseTime {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.05); opacity: 0.9; }
+}
+
+/* Listas - para inicio.html e controle.html */
+ul {
+    list-style: none;
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0;
+}
+
+ul li {
+    background: rgba(0, 0, 0, 0.8);
+    margin: 15px 0;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-left: 5px solid #CC0000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(204, 0, 0, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+ul li:hover::before {
+    left: 100%;
+}
+
+ul li:nth-child(even) {
+    border-left-color: #ffffff;
+    background: rgba(30, 30, 30, 0.8);
+}
+
+ul li:nth-child(3n) {
+    border-left-color: #CC0000;
+}
+
+ul li:nth-child(4n) {
+    border-left-color: #999999;
+}
+
+ul li:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 50px rgba(204, 0, 0, 0.2);
+    border-left-width: 8px;
+}
+
+/* Formulários - para postar.html */
+form {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(204, 0, 0, 0.5);
+}
+
+form input, 
+form textarea, 
+form select {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 10px 0 20px;
+    border: 2px solid rgba(204, 0, 0, 0.5);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: inherit;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    outline: none;
+    color: #ffffff;
+}
+
+form input:focus, 
+form textarea:focus, 
+form select:focus {
+    border-color: #CC0000;
+    box-shadow: 0 0 20px rgba(204, 0, 0, 0.3);
+    transform: translateY(-2px);
+    background: rgba(30, 30, 30, 0.8);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Botões - Estilos específicos e profissionais */
+button, 
+input[type="submit"], 
+.btn {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    min-width: 140px;
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    margin: 10px 5px;
+}
+
+button::before, 
+input[type="submit"]::before, 
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+button:hover::before, 
+input[type="submit"]:hover::before, 
+.btn:hover::before {
+    left: 100%;
+}
+
+button:hover, 
+input[type="submit"]:hover, 
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(204, 0, 0, 0.4);
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+}
+
+button:active, 
+input[type="submit"]:active, 
+.btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.5);
+}
+
+/* Botões de variações */
+.btn-success {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+    box-shadow: 0 15px 40px rgba(204, 0, 0, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.3);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    box-shadow: 0 15px 40px rgba(204, 0, 0, 0.4);
+}
+
+/* Cards genéricos */
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(204, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(204, 0, 0, 0.15);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+    
+    #botoes {
+        padding: 20px 10px;
+    }
+    
+    #botoes a {
+        display: block;
+        margin: 8px 10px;
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin: 30px 0 20px;
+    }
+    
+    #hora {
+        margin: 30px 15px;
+        padding: 30px 20px;
+        font-size: 18px;
+    }
+    
+    #hora-atual {
+        font-size: 2rem !important;
+    }
+    
+    ul {
+        margin: 20px 15px;
+    }
+    
+    ul li {
+        padding: 15px 20px;
+        margin: 12px 0;
+        font-size: 15px;
+    }
+    
+    form {
+        margin: 30px 15px;
+        padding: 30px 20px;
+    }
+    
+    button, 
+    input[type="submit"], 
+    .btn {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #botoes a {
+        margin: 5px 8px;
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    #hora {
+        padding: 25px 15px;
+        font-size: 16px;
+    }
+    
+    #hora-atual {
+        font-size: 1.8rem !important;
+    }
+    
+    ul li {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+
+/* Animações de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #000000, #CC0000);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #CC0000, #000000);
+}
+
+/* Efeitos especiais */
+.glass-effect {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(204, 0, 0, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(204, 0, 0, 0.37);
+}
+
+/* Estilos específicos para listar_posts.html */
+#todos_posts {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.postagem {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(204, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.postagem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(204, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: -1;
+}
+
+.postagem:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(150, 140, 140, 0.15);
+    border-color: rgba(204, 0, 0, 0.7);
+}
+
+.postagem h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #CC0000;
+    text-shadow: 0 2px 8px rgba(204, 0, 0, 0.3);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.postagem h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #CC0000, #000000);
+    border-radius: 2px;
+}
+
+.postagem img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto; 
+    align-items: center;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(119, 108, 108, 0.3);
+}
+
+.postagem img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(204, 0, 0, 0.2);
+    border-color: rgba(204, 0, 0, 0.6);
+}
+
+.postagem p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(30, 30, 30, 0.5);
+    border-radius: 12px;
+    border-left: 4px solid #CC0000;
+}
+
+/* Efeito de entrada para as postagens */
+.postagem {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.postagem:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.postagem:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.postagem:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #todos_posts {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+    
+    .postagem {
+        padding: 20px;
+        margin: 25px 0;
+    }
+    
+    .postagem h3 {
+        font-size: 1.5rem;
+    }
+    
+    .postagem p {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .postagem {
+        padding: 15px;
+        margin: 20px 0;
+    }
+    
+    .postagem h3 {
+        font-size: 1.3rem;
+    }
+    
+    .postagem img {
+        max-height: 300px;
+    }
+}
+
+/* Estilo para o botão "Escolher Arquivo" */
+input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+    box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+/* Estilo para o link de Login */
+#botoes a[href*="login"] {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+}
+
+#botoes a[href*="login"]:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%);
+    box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Adicione este CSS ao seu estilo.css existente */
+
+/* Correções para a barra de navegação */
+#botoes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#botoes a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 12px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+#botoes a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #CC0000);
+    border-radius: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+#botoes a:hover::before {
+    opacity: 1;
+}
+
+#botoes a:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(204, 0, 0, 0.4);
+}
+
+/* Estilo específico para o span do usuário */
+.user-info {
+    color: #CC0000;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 8px 15px;
+    background: rgba(204, 0, 0, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(204, 0, 0, 0.3);
+    white-space: nowrap;
+}
+
+/* Estilo específico para o link de login */
+.login-link {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+}
+
+.login-link:hover {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%) !important;
+    box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+}
+
+/* Estilo específico para o link de logout */
+.logout-link {
+    background: linear-gradient(135deg, #CC0000 0%, #000000 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.logout-link:hover {
+    background: linear-gradient(135deg, #000000 0%, #CC0000 100%) !important;
+    box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 768px) {
+    body {
+        padding-top: 90px;
+    }
+    
+    #botoes {
+        padding: 15px 10px;
+        min-height: 70px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #botoes a {
+        margin: 4px 8px;
+        padding: 10px 16px;
+        font-size: 15px;
+    }
+    
+    .user-info {
+        font-size: 14px;
+        margin: 4px 8px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 100px;
+    }
+    
+    #botoes {
+        min-height: 80px;
+        padding: 10px;
+    }
+    
+    #botoes a {
+        margin: 3px 5px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    
+    .user-info {
+        font-size: 13px;
+        margin: 3px 5px;
+        padding: 5px 10px;
+    }
+}

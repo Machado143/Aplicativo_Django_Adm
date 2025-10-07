@@ -1,0 +1,15 @@
+{% extends "mestre.html" %}
+
+{% block titulo %}
+Postar
+{% endblock titulo %}
+
+{% block conteudo %}
+{% load crispy_forms_tags %}
+<form action="{% url 'postar' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formulario }}
+    <button type="submit">Enviar</button>
+</form>
+{% endblock conteudo %}
+

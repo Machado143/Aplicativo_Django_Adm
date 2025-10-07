@@ -1,0 +1,18 @@
+{% extends "mestre.html" %}
+
+{% block titulo %}
+Postagens
+{% endblock titulo %}
+
+{% block conteudo %}
+<div id="todos_posts">
+{% for pp in postagens %}
+    <div class="postagem">
+        <h3>{{ pp.autor }}</h3>
+        <img src="/media/{{ pp.imagem }}"></img>
+        <p>{{ pp.mensagem }}</p>
+        <small>Postado em: {{ pp.data_postagem|date:"d/m/Y H:i" }}</small>
+    </div>
+{% endfor %}
+</div>
+{% endblock conteudo %}

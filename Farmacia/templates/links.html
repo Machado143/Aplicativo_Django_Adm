@@ -1,0 +1,19 @@
+<div id="botoes">
+    <a href="{% url 'home' %}">Inicio</a>
+    <a href="{% url 'agora' %}">Ver Data e Hora</a>
+    <a href="{% url 'postar' %}">Postar</a>
+    <a href="{% url 'listaposts' %}">Lista</a>
+    <a href="{% url 'registrar' %}">Cadastrar</a>
+
+    {% if user.is_authenticated %}
+        <span class="user-info">Olá, {{ user.username }}</span>
+        <a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="logout-link">
+            Logout
+        </a>
+        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: none;">
+            {% csrf_token %}
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}" class="login-link">Login</a>
+    {% endif %}
+</div>

@@ -1,0 +1,33 @@
+{% extends "mestre.html" %}
+
+
+{% block titulo %}Data Hora atual{% endblock titulo %}
+{% include "links.html" %}
+
+
+{% block conteudo %}
+<div id="hora">
+    Agora é hora de almoçar:
+    <span id="hora-atual">{{ datahora_atual|date:"d/m/Y H\hi\ms\s" }}</span>
+</div>
+
+
+<script>
+    function atualizarHora() {
+        var agora = new Date();
+        var dia = String(agora.getDate()).padStart(2, '0');
+        var mes = String(agora.getMonth() + 1).padStart(2, '0'); // Janeiro é 0!
+        var ano = agora.getFullYear();
+        var horas = String(agora.getHours()).padStart(2, '0');
+        var minutos = String(agora.getMinutes()).padStart(2, '0');
+        var segundos = String(agora.getSeconds()).padStart(2, '0');
+       
+        var horaFormatada = dia + '/' + mes + '/' + ano + ' ' + horas + 'h' + minutos + 'm' + segundos + 's';
+       
+        document.getElementById('hora-atual').textContent = horaFormatada;
+    }
+
+
+    setInterval(atualizarHora, 1000); // Atualiza a cada 1 segundo
+</script>
+{% endblock conteudo %}

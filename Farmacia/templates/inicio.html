@@ -1,0 +1,23 @@
+{% extends "mestre.html" %}
+
+
+{% block titulo %} Aula8 {% endblock titulo %}
+
+
+{% block conteudo %}
+<h1>Lista da variável:</h1>
+
+
+<ul>
+    {% for ii in variavel %}
+        {% if ii < 3 %}
+            <li>{{ ii }} é menor que 3</li>
+        {% elif ii == 3 %}
+            <li>{{ ii }} é igual a 3</li>
+        {% else %}
+            <li>{{ ii }} é maior que 3</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock conteudo %}
+
