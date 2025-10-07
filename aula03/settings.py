@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,7 +23,13 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a(bkv81hq^j&ghfc6x*gd7w!dos^2u@pxm)fwxzwj!1)pjv%19'
+SECRET_KEY = os.environ["SECRET_KEY"]
+
+DEBUG = False
+SESSION_COOKIE_SECURE = False if DEBUG else True
+SECURE_SSL_REDIRECT = False if DEBUG else True
+CSRF_COOKIE_SECURE = False if DEBUG else True
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -102,8 +109,8 @@ WSGI_APPLICATION = 'aula03.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["PGDATABASE"],
     }
 }
 
