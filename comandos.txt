@@ -1,13 +1,13 @@
 echo "django" > requirements.txt
-
 echo "pillow" >> requirements.txt
-
 echo "django-crispy-forms" >> requirements.txt
 echo "crispy-bootstrap5" >> requirements.txt
-
 echo "django-allauth" >> requirements.txt
 echo "requests" >> requirements.txt
 echo "pyjwt" >> requirements.txt
+echo "python-dotenv" >> requirements.txt
+echo "psycopg" >> requirements.txt
+echo "cryptography" >> requirements.txt
 
 pip install -r requirements.txt
 
