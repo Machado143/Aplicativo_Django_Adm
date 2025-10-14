@@ -10,6 +10,7 @@ echo "psycopg" >> requirements.txt
 echo "cryptography" >> requirements.txt
 echo "uvicorn" >> requirements.txt
 echo "servestatic" >> requirements.txt
+echo "mysql-connector-python" >> requirements.txt
 
 pip install -r requirements.txt
 
