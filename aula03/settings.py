@@ -37,7 +37,6 @@ CSRF_COOKIE_SECURE = False if DEBUG else True
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'aula-9-site-no-ar.onrender.com', 'localhost']
 
