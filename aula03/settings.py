@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+from corsheaders.defaults import default_headers
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'Farmacia',
     'contas',
+    "corsheaders",
 ]
 
 SITE_ID = 1
@@ -81,6 +83,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -170,3 +174,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+
+
+CORS_ALLOWED_ORIGINS=[
+    "http://127.0.0.1:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:3000",
+]
+
+CORS_EXPOSE_HEADERS = [
+    'HX-Redirect',
+]
+
+CORS_ALLOW_HEADERS = [
+    *default_headers,
+    'hx-current-url',
+    'hx-request',
+    'hx-trigger',
+    'hx-target',
+]
