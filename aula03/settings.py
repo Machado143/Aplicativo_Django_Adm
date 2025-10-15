@@ -30,7 +30,7 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = False
+DEBUG = True
 SESSION_COOKIE_SECURE = False if DEBUG else True
 SECURE_SSL_REDIRECT = False if DEBUG else True
 CSRF_COOKIE_SECURE = False if DEBUG else True
@@ -160,6 +160,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
